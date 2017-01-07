@@ -1,0 +1,33 @@
+{
+  "name": "sxty4",
+  "version": "0.0.0",
+  "description": "Base 64 string encoding and decoding.",
+  "main": "sxty4.js",
+  "support": "sxty4.support.js",
+  "deploy": "sxty4.deploy.js",
+  "authors": [
+    "Richeve S. Bebedor <richeve.bebedor@gmail.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "base64",
+    "string",
+    "encode",
+    "decode",
+    "sxty4"
+  ],
+  "homepage": "https://github.com/volkovasystems/sxty4",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "asea": "^0.6.0",
+    "falzy": "^0.7.0",
+    "harden": "^0.13.0",
+    "protype": "^0.8.0"
+  }
+}
