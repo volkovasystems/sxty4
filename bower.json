@@ -1,10 +1,8 @@
 {
   "name": "sxty4",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Base 64 string encoding and decoding.",
-  "main": "sxty4.js",
-  "support": "sxty4.support.js",
-  "deploy": "sxty4.deploy.js",
+  "main": "sxty4.deploy.js",
   "authors": [
     "Richeve S. Bebedor <richeve.bebedor@gmail.com>",
     "John Lenon Maghanoy <johnlenonmaghanoy@gmail.com>"

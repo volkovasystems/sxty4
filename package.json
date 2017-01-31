@@ -1,10 +1,11 @@
 {
   "name": "sxty4",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Base 64 string encoding and decoding.",
   "main": "sxty4.js",
   "support": "sxty4.support.js",
   "deploy": "sxty4.deploy.js",
+  "browser": "sxty4.deploy.js",
   "scripts": {
     "build": "babel sxty4.js -o sxty4.support.js && webpack",
     "test": "mocha sxty4-test.js"
@@ -42,6 +43,6 @@
     "babel-plugin-transform-runtime": "^6.22.0",
     "babel-preset-latest": "^6.22.0",
     "source-map-loader": "^0.1.6",
-    "webpack": "^1.14.0"
+    "webpack": "^2.2.1"
   }
 }
