@@ -130,10 +130,10 @@ const sxty4 = function sxty4( data ){
 		}
 
 		if( asea.client ){
-			cache[ RESULT ] = btoa( encodeURIComponent( value )
+			cache[ RESULT ] = encodeURIComponent( btoa( encodeURIComponent( value )
 				.replace( /%([0-9A-F]{2})/g, ( match, token ) => {
 					return String.fromCharCode( `0x${ token }` );
-				} ) );
+				} ) ) );
 
 		}else if( asea.server ){
 			cache[ RESULT ] = encodeURIComponent( new Buffer( value ).toString( "base64" ) );
@@ -162,11 +162,12 @@ const sxty4 = function sxty4( data ){
 		}
 
 		if( asea.client ){
-			cache[ RESULT ] = decodeURIComponent( atob( data ).split( "" ).map( ( character ) => {
-				character = `00${ character.charCodeAt( 0 ).toString( 16 ) }`.slice( -2 );
+			cache[ RESULT ] = decodeURIComponent( atob( decodeURIComponent( data ) )
+				.split( "" ).map( ( character ) => {
+					character = `00${ character.charCodeAt( 0 ).toString( 16 ) }`.slice( -2 );
 
-				return `%${ character }`;
-			} ).join( "" ) );
+					return `%${ character }`;
+				} ).join( "" ) );
 
 		}else if( asea.server ){
 			cache[ RESULT ] = new Buffer( decodeURIComponent( data ), "base64" ).toString( "utf8" );

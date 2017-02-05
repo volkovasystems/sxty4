@@ -1,6 +1,6 @@
 {
   "name": "sxty4",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Base 64 string encoding and decoding.",
   "main": "sxty4.deploy.js",
   "authors": [
