@@ -45,7 +45,7 @@
 	@end-module-configuration
 
 	@module-documentation:
-		Base 64 string encoding and decoding.
+		Base 64 string encoding and decoding with url safety.
 	@end-module-documentation
 
 	@include:
@@ -136,7 +136,7 @@ const sxty4 = function sxty4( data ){
 				} ) );
 
 		}else if( asea.server ){
-			cache[ RESULT ] = new Buffer( value ).toString( "base64" );
+			cache[ RESULT ] = encodeURIComponent( new Buffer( value ).toString( "base64" ) );
 
 		}else{
 			throw new Error( "cannot determine platform" );
@@ -169,7 +169,7 @@ const sxty4 = function sxty4( data ){
 			} ).join( "" ) );
 
 		}else if( asea.server ){
-			cache[ RESULT ] = new Buffer( data, "base64" ).toString( "utf8" );
+			cache[ RESULT ] = new Buffer( decodeURIComponent( data ), "base64" ).toString( "utf8" );
 
 		}else{
 			throw new Error( "cannot determine platform" );
