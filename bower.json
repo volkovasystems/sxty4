@@ -1,6 +1,6 @@
 {
   "name": "sxty4",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "Base 64 string encoding and decoding.",
   "main": "sxty4.deploy.js",
   "authors": [
@@ -25,8 +25,8 @@
   ],
   "dependencies": {
     "asea": "^0.8.0",
-    "falzy": "^0.10.0",
+    "falzy": "^0.11.0",
     "harden": "^0.14.0",
-    "protype": "^0.14.0"
+    "protype": "^0.15.0"
   }
 }
