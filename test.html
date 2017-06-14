@@ -1,8 +1,30 @@
+<!DOCTYPE html>
 <html>
 	<head>
-		<script
-			type="application/javascript"
-			src="./sxty4.deploy.js">
-		</script>
+		<title>sxty4 unit test</title>
+
+		<link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.3.2.css">
+
+		<script type="application/javascript" src="https://code.jquery.com/qunit/qunit-2.3.2.js"></script>
+
+		<script type="application/javascript" src="./sxty4.deploy.js"></script>
 	</head>
+
+	<body>
+		<div id="qunit"></div>
+
+		<div id="qunit-fixture"></div>
+
+		<script type="application/javascript">
+			QUnit.test( "sxty4 unit test", function( assert ) {
+
+				let password = sxty4( "hello" ).encode( );
+				let showpassword = sxty4( password ).decode( );
+
+				assert.equal( password, "aGVsbG8%3D", "should return 'aGVsbG8%3D'" );
+				assert.equal( showpassword, "hello", "should return 'hello'" );
+
+			} );
+		</script>
+	</body>
 </html>
