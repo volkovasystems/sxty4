@@ -1,0 +1,74 @@
+{
+	"stats": {
+		"suites": 3,
+		"tests": 4,
+		"passes": 4,
+		"pending": 0,
+		"failures": 0,
+		"start": "2017-07-29T01:39:09.245Z",
+		"end": "2017-07-29T01:39:09.254Z",
+		"duration": 9
+	},
+	"tests": [
+		{
+			"title": "should return Base64 instance",
+			"fullTitle": "sxty4 `sxty4( 'hello' )` should return Base64 instance",
+			"duration": 1,
+			"currentRetry": 0,
+			"err": {}
+		},
+		{
+			"title": "should encode to aGVsbG8%3D",
+			"fullTitle": "sxty4 `sxty4( 'hello' )` should encode to aGVsbG8%3D",
+			"duration": 2,
+			"currentRetry": 0,
+			"err": {}
+		},
+		{
+			"title": "should return Base64 instance",
+			"fullTitle": "sxty4 `sxty4( 'aGVsbG8%3D' )` should return Base64 instance",
+			"duration": 0,
+			"currentRetry": 0,
+			"err": {}
+		},
+		{
+			"title": "should decode to 'hello'",
+			"fullTitle": "sxty4 `sxty4( 'aGVsbG8%3D' )` should decode to 'hello'",
+			"duration": 1,
+			"currentRetry": 0,
+			"err": {}
+		}
+	],
+	"pending": [],
+	"failures": [],
+	"passes": [
+		{
+			"title": "should return Base64 instance",
+			"fullTitle": "sxty4 `sxty4( 'hello' )` should return Base64 instance",
+			"duration": 1,
+			"currentRetry": 0,
+			"err": {}
+		},
+		{
+			"title": "should encode to aGVsbG8%3D",
+			"fullTitle": "sxty4 `sxty4( 'hello' )` should encode to aGVsbG8%3D",
+			"duration": 2,
+			"currentRetry": 0,
+			"err": {}
+		},
+		{
+			"title": "should return Base64 instance",
+			"fullTitle": "sxty4 `sxty4( 'aGVsbG8%3D' )` should return Base64 instance",
+			"duration": 0,
+			"currentRetry": 0,
+			"err": {}
+		},
+		{
+			"title": "should decode to 'hello'",
+			"fullTitle": "sxty4 `sxty4( 'aGVsbG8%3D' )` should decode to 'hello'",
+			"duration": 1,
+			"currentRetry": 0,
+			"err": {}
+		}
+	]
+}

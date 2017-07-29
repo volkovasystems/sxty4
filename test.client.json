@@ -1,0 +1,162 @@
+{
+	"state": {
+		"passed": 4,
+		"failed": 0,
+		"skipped": 0
+	},
+	"start": "2017-07-29T01:39:10.887Z",
+	"end": "2017-07-29T01:39:29.129Z",
+	"capabilities": {
+		"browserName": "chrome",
+		"chromeOptions": {
+			"args": [
+				"disable-gpu",
+				"headless"
+			]
+		},
+		"proxy": null
+	},
+	"host": "127.0.0.1",
+	"port": 4444,
+	"baseUrl": "http://localhost",
+	"framework": "mocha",
+	"mochaOpts": {
+		"timeout": 10000,
+		"ui": "bdd"
+	},
+	"suites": [
+		{
+			"name": "sxty4",
+			"duration": 0,
+			"start": "2017-07-29T01:39:28.231Z",
+			"tests": [],
+			"hooks": []
+		},
+		{
+			"name": "sxty4",
+			"duration": 712,
+			"start": "2017-07-29T01:39:28.233Z",
+			"end": "2017-07-29T01:39:28.945Z",
+			"tests": [],
+			"hooks": [
+				{
+					"start": "2017-07-29T01:39:28.234Z",
+					"end": "2017-07-29T01:39:28.235Z",
+					"duration": 1,
+					"title": "\"before each\" hook",
+					"associatedSuite": "sxty4",
+					"associatedTest": "should return Base64 instance"
+				},
+				{
+					"start": "2017-07-29T01:39:28.724Z",
+					"end": "2017-07-29T01:39:28.724Z",
+					"duration": 0,
+					"title": "\"after each\" hook",
+					"associatedSuite": "sxty4",
+					"associatedTest": "should return Base64 instance"
+				},
+				{
+					"start": "2017-07-29T01:39:28.725Z",
+					"end": "2017-07-29T01:39:28.725Z",
+					"duration": 0,
+					"title": "\"before each\" hook",
+					"associatedSuite": "sxty4",
+					"associatedTest": "should encode to aGVsbG8%3D"
+				},
+				{
+					"start": "2017-07-29T01:39:28.781Z",
+					"end": "2017-07-29T01:39:28.781Z",
+					"duration": 0,
+					"title": "\"after each\" hook",
+					"associatedSuite": "sxty4",
+					"associatedTest": "should encode to aGVsbG8%3D"
+				},
+				{
+					"start": "2017-07-29T01:39:28.783Z",
+					"end": "2017-07-29T01:39:28.783Z",
+					"duration": 0,
+					"title": "\"before each\" hook",
+					"associatedSuite": "sxty4",
+					"associatedTest": "should return Base64 instance"
+				},
+				{
+					"start": "2017-07-29T01:39:28.890Z",
+					"end": "2017-07-29T01:39:28.890Z",
+					"duration": 0,
+					"title": "\"after each\" hook",
+					"associatedSuite": "sxty4",
+					"associatedTest": "should return Base64 instance"
+				},
+				{
+					"start": "2017-07-29T01:39:28.890Z",
+					"end": "2017-07-29T01:39:28.890Z",
+					"duration": 0,
+					"title": "\"before each\" hook",
+					"associatedSuite": "sxty4",
+					"associatedTest": "should decode to 'hello'"
+				},
+				{
+					"start": "2017-07-29T01:39:28.944Z",
+					"end": "2017-07-29T01:39:28.945Z",
+					"duration": 1,
+					"title": "\"after each\" hook",
+					"associatedSuite": "sxty4",
+					"associatedTest": "should decode to 'hello'"
+				},
+				{
+					"start": "2017-07-29T01:39:28.945Z",
+					"end": "2017-07-29T01:39:28.945Z",
+					"duration": 0,
+					"title": "\"after all\" hook",
+					"associatedSuite": "sxty4"
+				}
+			]
+		},
+		{
+			"name": "`sxty4( 'hello' )`",
+			"duration": 548,
+			"start": "2017-07-29T01:39:28.234Z",
+			"end": "2017-07-29T01:39:28.782Z",
+			"tests": [
+				{
+					"name": "should return Base64 instance",
+					"start": "2017-07-29T01:39:28.234Z",
+					"end": "2017-07-29T01:39:28.724Z",
+					"duration": 490,
+					"state": "pass"
+				},
+				{
+					"name": "should encode to aGVsbG8%3D",
+					"start": "2017-07-29T01:39:28.725Z",
+					"end": "2017-07-29T01:39:28.781Z",
+					"duration": 56,
+					"state": "pass"
+				}
+			],
+			"hooks": []
+		},
+		{
+			"name": "`sxty4( 'aGVsbG8%3D' )`",
+			"duration": 163,
+			"start": "2017-07-29T01:39:28.782Z",
+			"end": "2017-07-29T01:39:28.945Z",
+			"tests": [
+				{
+					"name": "should return Base64 instance",
+					"start": "2017-07-29T01:39:28.782Z",
+					"end": "2017-07-29T01:39:28.889Z",
+					"duration": 107,
+					"state": "pass"
+				},
+				{
+					"name": "should decode to 'hello'",
+					"start": "2017-07-29T01:39:28.890Z",
+					"end": "2017-07-29T01:39:28.944Z",
+					"duration": 54,
+					"state": "pass"
+				}
+			],
+			"hooks": []
+		}
+	]
+}

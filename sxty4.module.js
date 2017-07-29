@@ -64,7 +64,9 @@ const harden = require( "harden" );
 const Base64 = require( "./base64.js" );
 //: @end-server
 
-
+//: @client:
+const Base64 = require( "./base64.support.js" );
+//: @end-client
 
 const sxty4 = function sxty4( data ){
 	/*;

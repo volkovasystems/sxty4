@@ -40,7 +40,7 @@
               			],
               			"eMail": "richeve.bebedor@gmail.com",
               			"repository": "https://github.com/volkovasystems/sxty4.git",
-              			"test": "sxty4-test.js",
+              			"test": "test.module.js",
               			"global": true
               		}
               	@end-module-configuration
@@ -51,24 +51,20 @@
               
               	@include:
               		{
-              			"asea": "asea",
               			"falzy": "falzy",
-              			"harden": "harden",
-              			"protype": "protype"
+              			"harden": "harden"
               		}
               	@end-include
-              */var _freeze = require("babel-runtime/core-js/object/freeze");var _freeze2 = _interopRequireDefault(_freeze);var _defineProperty2 = require("babel-runtime/helpers/defineProperty");var _defineProperty3 = _interopRequireDefault(_defineProperty2);var _symbol = require("babel-runtime/core-js/symbol");var _symbol2 = _interopRequireDefault(_symbol);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+              */
 
-var asea = require("asea");
 var falzy = require("falzy");
 var harden = require("harden");
-var protype = require("protype");
 
-var DECODED = "decoded";
-var ENCODED = "encoded";
-var RESULT = (0, _symbol2.default)("result");
-var TYPE = (0, _symbol2.default)("type");
-var DATA = (0, _symbol2.default)("data");
+
+
+//: @client:
+var Base64 = require("./base64.support.js");
+//: @end-client
 
 var sxty4 = function sxty4(data) {
 	/*;
@@ -79,140 +75,15 @@ var sxty4 = function sxty4(data) {
                                   	@end-meta-configuration
                                   */
 
-	if (falzy(data) || !protype(data, STRING)) {
+	if (falzy(data) || typeof data != "string") {
 		throw new Error("invalid data");
 	}
 
-	/*;
-   	@note:
-   		This is intentionally var, do not change.
-   	@end-note
-   */
-	var cache = (0, _defineProperty3.default)({}, DATA, data);
-
-	var wrapper = {};
-
-	var update = function update(data) {
-		/*;
-                                     	@meta-configuration:
-                                     		{
-                                     			"data:required": "string"
-                                     		}
-                                     	@end-meta-configuration
-                                     */
-
-		if (falzy(cache)) {
-			throw new Error("data has been flushed");
-		}
-
-		if (falzy(data) || !protype(data, STRING)) {
-			throw new Error("invalid data");
-		}
-
-		cache[DATA] = data;
-
-		return wrapper;
-	};
-
-	var encode = function encode() {
-		if (falzy(cache)) {
-			throw new Error("data has been flushed");
-		}
-
-		if (cache[TYPE] === ENCODED) {
-			throw new Error("data has been encoded");
-		}
-
-		cache[TYPE] = ENCODED;
-		var value = cache[RESULT] || cache[DATA];
-
-		if (falzy(value)) {
-			throw new Error("empty value to be encoded");
-		}
-
-		if (asea.client) {
-			cache[RESULT] = encodeURIComponent(btoa(encodeURIComponent(value).
-			replace(/%([0-9A-F]{2})/g, function (match, token) {
-				return String.fromCharCode("0x" + token);
-			})));
-
-		} else if (asea.server) {
-			cache[RESULT] = encodeURIComponent(new Buffer(value).toString("base64"));
-
-		} else {
-			throw new Error("cannot determine platform");
-		}
-
-		return cache[RESULT];
-	};
-
-	var decode = function decode() {
-		if (falzy(cache)) {
-			throw new Error("data has been flushed");
-		}
-
-		if (cache[TYPE] === DECODED) {
-			throw new Error("data has been decoded");
-		}
-
-		cache[TYPE] = DECODED;
-		var value = cache[RESULT] || cache[DATA];
-
-		if (falzy(value)) {
-			throw new Error("empty value to be decoded");
-		}
-
-		if (asea.client) {
-			cache[RESULT] = decodeURIComponent(atob(decodeURIComponent(data)).
-			split("").map(function (character) {
-				character = ("00" + character.charCodeAt(0).toString(16)).slice(-2);
-
-				return "%" + character;
-			}).join(""));
-
-		} else if (asea.server) {
-			cache[RESULT] = new Buffer(decodeURIComponent(data), "base64").toString("utf8");
-
-		} else {
-			throw new Error("cannot determine platform");
-		}
-
-		return cache[RESULT];
-	};
-
-	var clear = function clear() {
-		if (falzy(cache)) {
-			throw new Error("data has been flushed");
-		}
-
-		cache[TYPE] = null;
-		cache[RESULT] = "";
-
-		return wrapper;
-	};
-
-	var flush = function flush() {
-		if (falzy(cache)) {
-			throw new Error("data has been flushed");
-		}
-
-		wrapper.clear();
-
-		cache[DATA] = "";
-		cache = null;
-
-		return wrapper;
-	};
-
-	harden("encode", encode, wrapper);
-	harden("decode", decode, wrapper);
-	harden("update", update, wrapper);
-	harden("clear", clear, wrapper);
-	harden("flush", flush, wrapper);
-
-	return (0, _freeze2.default)(wrapper);
+	return new Base64(data);
 };
 
-module.exports = sxty4;
+harden("Base64", Base64, sxty4);
 
+module.exports = sxty4;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInN4dHk0LnN1cHBvcnQuanMiXSwibmFtZXMiOlsiZmFsenkiLCJyZXF1aXJlIiwiaGFyZGVuIiwiQmFzZTY0Iiwic3h0eTQiLCJkYXRhIiwiRXJyb3IiLCJtb2R1bGUiLCJleHBvcnRzIl0sIm1hcHBpbmdzIjoiQUFBQTs7QUFFQTs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0FBeURBLElBQU1BLFFBQVFDLFFBQVMsT0FBVCxDQUFkO0FBQ0EsSUFBTUMsU0FBU0QsUUFBUyxRQUFULENBQWY7Ozs7QUFJQTtBQUNBLElBQU1FLFNBQVNGLFFBQVMscUJBQVQsQ0FBZjtBQUNBOztBQUVBLElBQU1HLFFBQVEsU0FBU0EsS0FBVCxDQUFnQkMsSUFBaEIsRUFBc0I7QUFDbkM7Ozs7Ozs7O0FBUUEsS0FBSUwsTUFBT0ssSUFBUCxLQUFpQixPQUFPQSxJQUFQLElBQWUsUUFBcEMsRUFBOEM7QUFDN0MsUUFBTSxJQUFJQyxLQUFKLENBQVcsY0FBWCxDQUFOO0FBQ0E7O0FBRUQsUUFBUyxJQUFJSCxNQUFKLENBQVlFLElBQVosQ0FBVDtBQUNBLENBZEQ7O0FBZ0JBSCxPQUFRLFFBQVIsRUFBa0JDLE1BQWxCLEVBQTBCQyxLQUExQjs7QUFFQUcsT0FBT0MsT0FBUCxHQUFpQkosS0FBakIiLCJmaWxlIjoic3h0eTQuc3VwcG9ydC5qcyIsInNvdXJjZXNDb250ZW50IjpbIlwidXNlIHN0cmljdFwiO1xuXG4vKjtcblx0QG1vZHVsZS1saWNlbnNlOlxuXHRcdFRoZSBNSVQgTGljZW5zZSAoTUlUKVxuXHRcdEBtaXQtbGljZW5zZVxuXG5cdFx0Q29weXJpZ2h0IChAYykgMjAxNyBSaWNoZXZlIFNpb2RpbmEgQmViZWRvclxuXHRcdEBlbWFpbDogcmljaGV2ZS5iZWJlZG9yQGdtYWlsLmNvbVxuXG5cdFx0UGVybWlzc2lvbiBpcyBoZXJlYnkgZ3JhbnRlZCwgZnJlZSBvZiBjaGFyZ2UsIHRvIGFueSBwZXJzb24gb2J0YWluaW5nIGEgY29weVxuXHRcdG9mIHRoaXMgc29mdHdhcmUgYW5kIGFzc29jaWF0ZWQgZG9jdW1lbnRhdGlvbiBmaWxlcyAodGhlIFwiU29mdHdhcmVcIiksIHRvIGRlYWxcblx0XHRpbiB0aGUgU29mdHdhcmUgd2l0aG91dCByZXN0cmljdGlvbiwgaW5jbHVkaW5nIHdpdGhvdXQgbGltaXRhdGlvbiB0aGUgcmlnaHRzXG5cdFx0dG8gdXNlLCBjb3B5LCBtb2RpZnksIG1lcmdlLCBwdWJsaXNoLCBkaXN0cmlidXRlLCBzdWJsaWNlbnNlLCBhbmQvb3Igc2VsbFxuXHRcdGNvcGllcyBvZiB0aGUgU29mdHdhcmUsIGFuZCB0byBwZXJtaXQgcGVyc29ucyB0byB3aG9tIHRoZSBTb2Z0d2FyZSBpc1xuXHRcdGZ1cm5pc2hlZCB0byBkbyBzbywgc3ViamVjdCB0byB0aGUgZm9sbG93aW5nIGNvbmRpdGlvbnM6XG5cblx0XHRUaGUgYWJvdmUgY29weXJpZ2h0IG5vdGljZSBhbmQgdGhpcyBwZXJtaXNzaW9uIG5vdGljZSBzaGFsbCBiZSBpbmNsdWRlZCBpbiBhbGxcblx0XHRjb3BpZXMgb3Igc3Vic3RhbnRpYWwgcG9ydGlvbnMgb2YgdGhlIFNvZnR3YXJlLlxuXG5cdFx0VEhFIFNPRlRXQVJFIElTIFBST1ZJREVEIFwiQVMgSVNcIiwgV0lUSE9VVCBXQVJSQU5UWSBPRiBBTlkgS0lORCwgRVhQUkVTUyBPUlxuXHRcdElNUExJRUQsIElOQ0xVRElORyBCVVQgTk9UIExJTUlURUQgVE8gVEhFIFdBUlJBTlRJRVMgT0YgTUVSQ0hBTlRBQklMSVRZLFxuXHRcdEZJVE5FU1MgRk9SIEEgUEFSVElDVUxBUiBQVVJQT1NFIEFORCBOT05JTkZSSU5HRU1FTlQuIElOIE5PIEVWRU5UIFNIQUxMIFRIRVxuXHRcdEFVVEhPUlMgT1IgQ09QWVJJR0hUIEhPTERFUlMgQkUgTElBQkxFIEZPUiBBTlkgQ0xBSU0sIERBTUFHRVMgT1IgT1RIRVJcblx0XHRMSUFCSUxJVFksIFdIRVRIRVIgSU4gQU4gQUNUSU9OIE9GIENPTlRSQUNULCBUT1JUIE9SIE9USEVSV0lTRSwgQVJJU0lORyBGUk9NLFxuXHRcdE9VVCBPRiBPUiBJTiBDT05ORUNUSU9OIFdJVEggVEhFIFNPRlRXQVJFIE9SIFRIRSBVU0UgT1IgT1RIRVIgREVBTElOR1MgSU4gVEhFXG5cdFx0U09GVFdBUkUuXG5cdEBlbmQtbW9kdWxlLWxpY2Vuc2VcblxuXHRAbW9kdWxlLWNvbmZpZ3VyYXRpb246XG5cdFx0e1xuXHRcdFx0XCJwYWNrYWdlXCI6IFwic3h0eTRcIixcblx0XHRcdFwicGF0aFwiOiBcInN4dHk0L3N4dHk0LmpzXCIsXG5cdFx0XHRcImZpbGVcIjogXCJzeHR5NC5qc1wiLFxuXHRcdFx0XCJtb2R1bGVcIjogXCJzeHR5NFwiLFxuXHRcdFx0XCJhdXRob3JcIjogXCJSaWNoZXZlIFMuIEJlYmVkb3JcIixcblx0XHRcdFwiY29udHJpYnV0b3JzXCI6IFtcblx0XHRcdFx0XCJKb2huIExlbm9uIE1hZ2hhbm95IDxqb2hubGVub25tYWdoYW5veUBnbWFpbC5jb20+XCIsXG5cdFx0XHRcdFwiVmluc2UgVmluYWxvblwiXG5cdFx0XHRdLFxuXHRcdFx0XCJlTWFpbFwiOiBcInJpY2hldmUuYmViZWRvckBnbWFpbC5jb21cIixcblx0XHRcdFwicmVwb3NpdG9yeVwiOiBcImh0dHBzOi8vZ2l0aHViLmNvbS92b2xrb3Zhc3lzdGVtcy9zeHR5NC5naXRcIixcblx0XHRcdFwidGVzdFwiOiBcInRlc3QubW9kdWxlLmpzXCIsXG5cdFx0XHRcImdsb2JhbFwiOiB0cnVlXG5cdFx0fVxuXHRAZW5kLW1vZHVsZS1jb25maWd1cmF0aW9uXG5cblx0QG1vZHVsZS1kb2N1bWVudGF0aW9uOlxuXHRcdEJhc2UgNjQgc3RyaW5nIGVuY29kaW5nIGFuZCBkZWNvZGluZyB3aXRoIHVybCBzYWZldHkuXG5cdEBlbmQtbW9kdWxlLWRvY3VtZW50YXRpb25cblxuXHRAaW5jbHVkZTpcblx0XHR7XG5cdFx0XHRcImZhbHp5XCI6IFwiZmFsenlcIixcblx0XHRcdFwiaGFyZGVuXCI6IFwiaGFyZGVuXCJcblx0XHR9XG5cdEBlbmQtaW5jbHVkZVxuKi9cblxuY29uc3QgZmFsenkgPSByZXF1aXJlKCBcImZhbHp5XCIgKTtcbmNvbnN0IGhhcmRlbiA9IHJlcXVpcmUoIFwiaGFyZGVuXCIgKTtcblxuXG5cbi8vOiBAY2xpZW50OlxuY29uc3QgQmFzZTY0ID0gcmVxdWlyZSggXCIuL2Jhc2U2NC5zdXBwb3J0LmpzXCIgKTtcbi8vOiBAZW5kLWNsaWVudFxuXG5jb25zdCBzeHR5NCA9IGZ1bmN0aW9uIHN4dHk0KCBkYXRhICl7XG5cdC8qO1xuXHRcdEBtZXRhLWNvbmZpZ3VyYXRpb246XG5cdFx0XHR7XG5cdFx0XHRcdFwiZGF0YTpyZXF1aXJlZFwiOiBcInN0cmluZ1wiXG5cdFx0XHR9XG5cdFx0QGVuZC1tZXRhLWNvbmZpZ3VyYXRpb25cblx0Ki9cblxuXHRpZiggZmFsenkoIGRhdGEgKSB8fCB0eXBlb2YgZGF0YSAhPSBcInN0cmluZ1wiICl7XG5cdFx0dGhyb3cgbmV3IEVycm9yKCBcImludmFsaWQgZGF0YVwiICk7XG5cdH1cblxuXHRyZXR1cm4gKCBuZXcgQmFzZTY0KCBkYXRhICkgKTtcbn07XG5cbmhhcmRlbiggXCJCYXNlNjRcIiwgQmFzZTY0LCBzeHR5NCApO1xuXG5tb2R1bGUuZXhwb3J0cyA9IHN4dHk0O1xuIl19
 //# sourceMappingURL=sxty4.support.js.map

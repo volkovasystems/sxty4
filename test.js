@@ -1,7 +1,7 @@
 "use strict";
 
 /*;
-	@module-license:
+	@test-license:
 		The MIT License (MIT)
 		@mit-license
 
@@ -25,63 +25,81 @@
 		LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 		OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 		SOFTWARE.
-	@end-module-license
+	@end-test-license
 
-	@module-configuration:
+	@test-configuration:
 		{
 			"package": "sxty4",
-			"path": "sxty4/sxty4.js",
-			"file": "sxty4.js",
-			"module": "sxty4",
+			"path": "sxty4/test.module.js",
+			"file": "test.module.js",
+			"module": "test",
 			"author": "Richeve S. Bebedor",
-			"contributors": [
-				"John Lenon Maghanoy <johnlenonmaghanoy@gmail.com>",
-				"Vinse Vinalon"
-			],
 			"eMail": "richeve.bebedor@gmail.com",
-			"repository": "https://github.com/volkovasystems/sxty4.git",
-			"test": "test.module.js",
-			"global": true
+			"repository": "https://github.com/volkovasystems/sxty4.git"
 		}
-	@end-module-configuration
+	@end-test-configuration
 
-	@module-documentation:
-		Base 64 string encoding and decoding with url safety.
-	@end-module-documentation
+	@test-documentation:
+
+	@end-test-documentation
 
 	@include:
 		{
-			"falzy": "falzy",
-			"harden": "harden"
+			"assert": "should",
+			"sxty4": "sxty4"
 		}
 	@end-include
 */
 
-const falzy = require( "falzy" );
-const harden = require( "harden" );
+const assert = require( "should" );
 
 //: @server:
-const Base64 = require( "./base64.js" );
+const sxty4 = require( "./sxty4.js" );
 //: @end-server
 
 
 
-const sxty4 = function sxty4( data ){
-	/*;
-		@meta-configuration:
-			{
-				"data:required": "string"
-			}
-		@end-meta-configuration
-	*/
 
-	if( falzy( data ) || typeof data != "string" ){
-		throw new Error( "invalid data" );
-	}
 
-	return ( new Base64( data ) );
-};
 
-harden( "Base64", Base64, sxty4 );
+//: @server:
 
-module.exports = sxty4;
+describe( "sxty4", ( ) => {
+
+	describe( "`sxty4( 'hello' )`", ( ) => {
+		let data = sxty4( "hello" );
+
+		it( "should return Base64 instance", ( ) => {
+			assert.equal( typeof data, "object" );
+
+			assert.equal( data.constructor.name, "Base64" );
+		} );
+
+		it( "should encode to aGVsbG8%3D", ( ) => {
+			assert.equal( data.encode( ), "aGVsbG8%3D" );
+		} );
+	} );
+
+	describe( "`sxty4( 'aGVsbG8%3D' )`", ( ) => {
+		let data = sxty4( "aGVsbG8%3D" );
+
+		it( "should return Base64 instance", ( ) => {
+			assert.equal( typeof data, "object" );
+
+			assert.equal( data.constructor.name, "Base64" );
+		} );
+
+		it( "should decode to 'hello'", ( ) => {
+			assert.equal( data.decode( ), "hello" );
+		} );
+	} );
+
+} );
+
+//: @end-server
+
+
+
+
+
+
